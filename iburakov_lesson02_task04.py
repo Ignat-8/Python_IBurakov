@@ -8,4 +8,4 @@
 list_of_employees = ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА', 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
 
 for idx, elem in enumerate(list_of_employees):
-    print(' '.join(['Привет, ', elem.split(' ')[-1].lower().capitalize(), '!']))
+    print(' '.join(['Привет, ', elem.split(' ')[-1].capitalize(), '!']))

@@ -14,9 +14,10 @@ while idx < len(message_temp):
     if elem[-1].isdigit():  # для числовых данных проверям
         # дополнение нулем до двух разрядов
         if len(elem) == 1:  # если число из одного разряда
-            elem = "{:02d}".format(int(elem))
-        elif elem[0] == '+' or elem[0] == '-':  # если в начале числа есть знак + или -
-            elem = ''.join([elem[0], "{:02d}".format(int(elem[1]))])  # добавляем 0 в промежутке
+            elem = f'{int(elem):02d}'  # форматируем под два разряда
+        elif elem[0] in ('+', '-'):  # если в начале числа есть знак + или -
+            # то форматируем число перез знаком до двух разрядов
+            elem = ''.join([elem[0], f'{int(elem[1]):02d}'])
         # получившееся число добавляем в выходной список
         message_temp.insert(idx, '"')
         idx += 1
@@ -30,7 +31,7 @@ cnt = 0  # счетчик пробелов
 for idx, elem in enumerate(message_temp):
     if elem == '"':
         cnt += 1
-    if cnt == 2 or (cnt == 1 and message_temp[idx-1] == '"'):
+    if cnt == 2 or (cnt == 1 and message_temp[idx - 1] == '"'):
         message_out = ''.join([message_out, elem])
     else:
         message_out = ' '.join([message_out, elem])
