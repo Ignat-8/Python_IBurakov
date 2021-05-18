@@ -61,6 +61,3 @@ for _ in range(0, 4):
     message_out += ' '.join([price[0], 'руб', price[1], 'коп']) + ', '
 print(message_out)
 print()
-
-
-
