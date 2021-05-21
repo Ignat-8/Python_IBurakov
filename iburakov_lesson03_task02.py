@@ -56,6 +56,7 @@ def num_translate(world):
     else:
         return None
 
+
 world_translate = input('Введите числительное для перевода на русский\английский или q для выхода: ')
 while world_translate != 'q':
     print(num_translate(world_translate))
