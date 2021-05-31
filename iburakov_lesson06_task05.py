@@ -57,3 +57,4 @@ if len(sys.argv) == 4:
         sys.exit(1)
 else:
     print(f'Введите путь к файлу users.csv, файлу hobby.csv и выходному файлу users_dict2.csv')
+    
