@@ -1,0 +1,9 @@
+{"folder_1":{"folder_name": "settings",
+			"files_name": "()"},
+"folder_2":{"folder_name": "mainapp",
+			"files_name": ""},
+"folder_3":{"folder_name": "adminapp",
+			"files_name": ""},
+"folder_4":{"folder_name": "authapp",
+				"files_name": ""}
+}

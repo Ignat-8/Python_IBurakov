@@ -1,0 +1,8 @@
+{"folder_1":{"folder_name": "settings", "files_name": "__init__.py, dev.py, prod.py"},
+"folder_2":{"folder_name": "mainapp", "files_name": "__init__.py, models.py, views.py"},
+"folder_3":{"folder_name": "mainapp\\templates", "files_name": ""},
+"folder_4":{"folder_name": "mainapp\\templates\\mainapp", "files_name": "base.html, index.html"},
+"folder_5":{"folder_name": "authapp", "files_name": "__init__.py, models.py, views.py"},
+"folder_6":{"folder_name": "authapp\\templates", "files_name": ""},
+"folder_7":{"folder_name": "authapp\\templates\\authapp", "files_name": "base.html, index.html"}
+}
