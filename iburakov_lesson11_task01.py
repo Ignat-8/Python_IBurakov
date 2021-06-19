@@ -10,14 +10,21 @@ class Own_data:
     def __init__(self, user_str):
         self.user_str = user_str
 
-    @classmethod
-    def get_number_from_data(cls, user_data):
+    @classmethod  # первый способ - через список
+    def get_number_from_data1(cls, user_data):
         re_user_str = re.compile(r'([0-9]+)-([0-9]+)-([0-9]+)')
         return [int(el) for el in re_user_str.findall(cls(user_data).user_str)[0]]
 
-    @staticmethod
-    def check_number_from_data(user_data):
-        tmp = Own_data.get_number_from_data(user_data)
+    @classmethod  # второй способ - через словарь
+    def get_number_from_data2(cls, user_data):
+        re_user_str = re.compile(r'(?P<dd>[0-9]+)-(?P<mm>[0-9]+)-(?P<yyyy>[0-9]+)')
+        dict_out = [el for el in map(lambda x: x.groupdict(), re_user_str.finditer(cls(user_data).user_str))][0]
+        dict_out = {key: int(val) for key, val in dict_out.items()}
+        return dict_out
+
+    @staticmethod  # первый способ - через список
+    def check_number_from_data1(user_data):
+        tmp = Own_data.get_number_from_data1(user_data)
         if tmp[0] == 0 or tmp[0] > 31:
             return f'Вы ввели не верное номер дня месяца'
         if tmp[1] == 0 or tmp[1] > 12:
@@ -25,7 +32,21 @@ class Own_data:
         if tmp[2] == 0:
             return f'Вы ввели не верный номер года'
 
+    @staticmethod  # второй способ - через словарь
+    def check_number_from_data2(user_data):
+        tmp = Own_data.get_number_from_data2(user_data)
+        if tmp['dd'] == 0 or tmp['dd'] > 31:
+            return f'Вы ввели не верное номер дня месяца'
+        if tmp['mm'] == 0 or tmp['mm'] > 12:
+            return f'Вы ввели не верный номер месяца'
+        if tmp['yyyy'] == 0:
+            return f'Вы ввели не верный номер года'
+
 
 my_data = '12-34-2022'
-print(f'Строка даты "{my_data}" преобразованная в числа: {Own_data.get_number_from_data(my_data)}')
-print(f'Проверка даты - {Own_data.check_number_from_data(my_data)}')
+print('Первый способ')
+print(f'Строка даты "{my_data}" преобразованная в числа: {Own_data.get_number_from_data1(my_data)}')
+print(f'Проверка даты - {Own_data.check_number_from_data1(my_data)}')
+print('\nВторой способ')
+print(f'Строка даты "{my_data}" преобразованная в числа: {Own_data.get_number_from_data2(my_data)}')
+print(f'Проверка даты - {Own_data.check_number_from_data2(my_data)}')
